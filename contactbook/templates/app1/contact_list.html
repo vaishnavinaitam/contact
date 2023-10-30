@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  <title>CONTACT LIST</title>
+{% endblock %}
+
+{% block content %}
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>STORE NAME</th>
+      <th>PHONE NO</th>
+      <th>EMAIL</th>
+      <th>ADDRESS</th>
+      <th>ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in data %}
+      <tr>
+        <td>{{contact.stname}}</td>
+        <td>{{contact.phno}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.add}}</td>
+        <td>
+          <a href="{% url 'update_url' contact.id %}"><button class="btn btn-outline-warning btn-sm me-3">UPDATE</button></a>
+          <a href="{% url 'delete_url' contact.id %}"><button class="btn btn-outline-danger btn-sm ">DELETE</button></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock%}
